@@ -1,0 +1,33 @@
+#include "lab10astud.h"
+#include <gtest/gtest.h>
+
+using namespace std;
+using namespace nsStud;
+
+TEST(Lab10aTest, CountMarks) {
+  vector<Student> s = {{1, "A", I, RI, 5, 5, 5},
+                       {2, "B", II, CS, 4, 4, 4},
+                       {3, "C", III, VR, 3, 3, 3},
+                       {4, "D", IV, KS, 5, 3, 5}};
+
+  int c5, c4, c3;
+  countMarks(s, c5, c4, c3);
+
+  EXPECT_EQ(c5, 2);
+  EXPECT_EQ(c4, 1);
+  EXPECT_EQ(c3, 1);
+}
+
+TEST(Lab10aTest, PercentGoodPhysMath) {
+  vector<Student> s = {{1, "A", I, RI, 5, 5, 5},
+                       {2, "B", II, VR, 4, 4, 3},
+                       {3, "C", III, CS, 3, 4, 4}};
+
+  double p = percentGoodPhysMath(s);
+  EXPECT_NEAR(p, 66.666, 0.01);
+}
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
